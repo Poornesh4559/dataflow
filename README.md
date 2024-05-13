@@ -1,15 +1,14 @@
 # dataflow
 
-gcloud auth application-default login
+* gcloud auth application-default login
+* gcloud services enable dataflow.googleapis.com
+* gcloud services enable cloudbuild.googleapis.com
+* gcloud config set builds/use_kaniko True
+* gcloud config get-value project
 
-gcloud services enable dataflow.googleapis.com
-gcloud services enable cloudbuild.googleapis.com
-gcloud config set builds/use_kaniko True
-gcloud config get-value project
-
-TEMPLATE_IMAGE = gcr.io/smart-quasar-342413/dataflow/my_pipeline:latest
-PROJECT_ID = smart-quasar-342413
-TEMPLATE_PATH = gs://${BUCKET}/templates/mytemplate.json
++ TEMPLATE_IMAGE = gcr.io/smart-quasar-342413/dataflow/my_pipeline:latest
++ PROJECT_ID = smart-quasar-342413
++ TEMPLATE_PATH = gs://${BUCKET}/templates/mytemplate.json
 
 gcloud builds submit --tag gcr.io/{PROJECT_ID}/dataflow/my_pipeline:latest
 
